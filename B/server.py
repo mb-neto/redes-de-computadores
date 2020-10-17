@@ -1,4 +1,4 @@
-from socket import * # sockets
+from socket import *
 
 serverName = ''
 serverPort = 61000

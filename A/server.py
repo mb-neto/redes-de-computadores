@@ -1,4 +1,4 @@
-from socket import * # sockets
+from socket import *
 import time
 
 serverName = ''
