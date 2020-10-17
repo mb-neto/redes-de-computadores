@@ -13,6 +13,9 @@ while 1:
   sentence = sentence.decode('utf-8')
   print ('Cliente %s enviou: %s' % (addr, sentence))
   os.system(sentence)
-  connectionSocket.send('ok'.encode('utf-8'))
+  if os.system(sentence):
+    connectionSocket.send('ok'.encode('utf-8'))
+  else:
+    connectionSocket.send('exit 1'.encode('utf-8'))
   connectionSocket.close()
 serverSocket.close()
