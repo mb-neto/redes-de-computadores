@@ -10,14 +10,14 @@ while 1:
     connectionSocket, addr = serverSocket.accept()
     sentence = connectionSocket.recv(1024)
     sentence = sentence.decode('utf-8')
-    if message == "obter arquivo.txt":
+    if sentence == "obter arquivo.txt":
         with open('arquivo.txt', 'r') as file:
             capitalizedSentence = file.read()
         print ('Cliente %s enviou: %s' % (addr, sentence))
         connectionSocket.send(capitalizedSentence.encode('utf-8'))
-        connectionSocket.close()
+        
     else:
         capitalizedSentence = "Comando inválido"
         connectionSocket.send(capitalizedSentence.encode('utf-8'))
-        connectionSocket.close()
+    connectionSocket.close()
 serverSocket.close()
