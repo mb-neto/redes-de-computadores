@@ -12,10 +12,10 @@ while 1:
   sentence = connectionSocket.recv(1024)
   sentence = sentence.decode('utf-8')
   print ('Cliente %s enviou: %s' % (addr, sentence))
-  os.system(sentence)
-  if os.system(sentence):
+  try:
+    os.system(sentence)
     connectionSocket.send('ok'.encode('utf-8'))
-  else:
-    connectionSocket.send('exit 1'.encode('utf-8'))
+  except:
+    connectionSocket.send('comando invalido'.encode('utf-8'))
   connectionSocket.close()
 serverSocket.close()
